@@ -18,7 +18,13 @@ const Layout = ({ children }) => (
       { children }
     </Content>
     <Footer>
-      Footer
+      <div className="footer-container">
+        <span>
+          Created by
+          {' '}
+          <a href="https://www.linkedin.com/in/haosiongng/">HaoSiong Ng</a>
+        </span>
+      </div>
     </Footer>
   </AntLayout>
 );
