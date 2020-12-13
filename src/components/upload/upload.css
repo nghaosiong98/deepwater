@@ -1,0 +1,32 @@
+.locate img {
+  width: 30px;
+  cursor: pointer;
+}
+
+.search-bar {
+
+}
+
+.search-bar input {
+  padding: 0.5em;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.map-container {
+  width: 70vw;
+  height: 300px;
+}
+
+.form-section {
+  display: grid;
+  place-items: center;
+}
+
+.form-section .card {
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  margin: 100px;
+  padding: 50px;
+}
