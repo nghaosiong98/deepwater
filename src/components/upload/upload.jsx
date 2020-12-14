@@ -1,8 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from 'antd';
-// import { useFormik } from 'formik';
+import {
+  Upload, Button, Form,
+} from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import {
   GoogleMap,
   useLoadScript,
@@ -25,10 +26,7 @@ import locateIcon from '../../images/locate-me.svg';
 import './upload.css';
 
 const libraries = ['places'];
-const mapContainerStyle = {
-  width: '30vw',
-  height: '70vh',
-};
+
 const center = {
   lat: 3.139003,
   lng: 101.686852,
@@ -45,6 +43,7 @@ const UploadPage = () => {
     libraries,
   });
   const [markers, setMarkers] = React.useState([]);
+  const [form] = Form.useForm();
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -65,31 +64,78 @@ const UploadPage = () => {
     setMarker(lat, lng);
   }, []);
 
+  const customRequest = ({ file, onSuccess }) => {
+    console.log(file);
+    setTimeout(() => {
+      onSuccess('ok');
+    }, 0);
+  };
+
+  const normFile = (e) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e && e.fileList;
+  };
+
+  const onFinish = (values) => {
+    console.log(values);
+  };
+
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading Maps';
 
   return (
     <div className="form-section">
       <div className="card">
-        <Typography.Text strong>
-          Location:
-        </Typography.Text>
-        <Search panTo={panTo} />
-        {/* <Locate panTo={panTo} /> */}
-        <GoogleMap
-          mapContainerClassName="map-container"
-          center={center}
-          zoom={8}
-          options={options}
-          onLoad={onMapLoad}
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={onFinish}
+          initialValues={{
+            location: {
+              lat: null,
+              lng: null,
+            },
+          }}
         >
-          {markers.map((marker) => (
-            <Marker
-              key={marker.time.toISOString()}
-              position={{ lat: marker.lat, lng: marker.lng }}
-            />
-          ))}
-        </GoogleMap>
+          <Form.Item name="location" label="Location">
+            <Search panTo={panTo} />
+          </Form.Item>
+          {/* <Locate panTo={panTo} /> */}
+          <GoogleMap
+            mapContainerClassName="map-container"
+            center={center}
+            zoom={8}
+            options={options}
+            onLoad={onMapLoad}
+          >
+            {markers.map((marker) => (
+              <Marker
+                key={marker.time.toISOString()}
+                position={{ lat: marker.lat, lng: marker.lng }}
+              />
+            ))}
+          </GoogleMap>
+
+          <Form.Item
+            name="upload"
+            label="Upload photos"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+          >
+            <Upload
+              customRequest={customRequest}
+              className="upload-list-inline"
+              listType="picture"
+            >
+              <Button icon={<UploadOutlined />}>Upload</Button>
+            </Upload>
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">Submit</Button>
+          </Form.Item>
+        </Form>
       </div>
     </div>
   );
@@ -97,7 +143,7 @@ const UploadPage = () => {
 
 export default UploadPage;
 
-const Search = ({ panTo }) => {
+const Search = ({ panTo, onChange }) => {
   const {
     ready, value, suggestions: { status, data }, setValue, clearSuggestions,
   } = usePlacesAutocomplete({
@@ -106,6 +152,14 @@ const Search = ({ panTo }) => {
       radius: 200 * 1000,
     },
   });
+
+  const triggerChange = (changedValue) => {
+    if (onChange) {
+      onChange({
+        ...changedValue,
+      });
+    }
+  };
 
   return (
     <div className="search-bar">
@@ -117,6 +171,7 @@ const Search = ({ panTo }) => {
             const results = await getGeocode({ address });
             const { lat, lng } = await getLatLng(results[0]);
             panTo({ lat, lng });
+            triggerChange({ lat, lng });
           } catch (error) {
             console.log('error!');
           }
@@ -128,7 +183,7 @@ const Search = ({ panTo }) => {
             setValue(event.target.value);
           }}
           disabled={!ready}
-          placeholder="Enter an Address"
+          placeholder="Enter an address"
         />
         <ComboboxPopover>
           <ComboboxList>
@@ -142,6 +197,7 @@ const Search = ({ panTo }) => {
 
 Search.propTypes = {
   panTo: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 const Locate = ({ panTo }) => (
