@@ -1,13 +1,18 @@
 import React from 'react';
-import './App.css';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import Layout from '../layout/Layout';
 import Routes from '../routes';
 
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <Layout>
-      <Routes />
-    </Layout>
+    <QueryClientProvider client={queryClient}>
+      <Layout>
+        <Routes />
+      </Layout>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 

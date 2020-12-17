@@ -21,6 +21,8 @@ import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from 'use-places-autocomplete';
+import axios from 'axios';
+import { useMutation } from 'react-query';
 import mapStyles from './mapStyles';
 import locateIcon from '../../images/locate-me.svg';
 import './upload.css';
@@ -64,6 +66,23 @@ const UploadPage = () => {
     setMarker(lat, lng);
   }, []);
 
+  const postUpload = useMutation((formData) => axios.post(
+    'http://34.87.47.149/predict',
+    formData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    },
+  ), {
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   const customRequest = ({ file, onSuccess }) => {
     console.log(file);
     setTimeout(() => {
@@ -80,6 +99,14 @@ const UploadPage = () => {
 
   const onFinish = (values) => {
     console.log(values);
+    const formData = new FormData();
+    const { location, upload } = values;
+    upload.forEach((file) => {
+      formData.append('images', file.originFileObj);
+    });
+    formData.append('lat', location.lat);
+    formData.append('lng', location.lng);
+    postUpload.mutate(formData);
   };
 
   if (loadError) return 'Error loading maps';
@@ -97,6 +124,7 @@ const UploadPage = () => {
               lat: null,
               lng: null,
             },
+            upload: [],
           }}
         >
           <Form.Item name="location" label="Location">
@@ -128,6 +156,8 @@ const UploadPage = () => {
               customRequest={customRequest}
               className="upload-list-inline"
               listType="picture"
+              beforeUpload={() => false}
+              multiple
             >
               <Button icon={<UploadOutlined />}>Upload</Button>
             </Upload>
