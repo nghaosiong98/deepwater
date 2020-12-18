@@ -58,6 +58,7 @@ const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
       onSetResults(data.results);
     },
     onError: (error) => {
+      // eslint-disable-next-line no-console
       console.log(error);
     },
   });
@@ -212,7 +213,8 @@ const Search = ({ panTo, onChange }) => {
             panTo({ lat, lng });
             triggerChange({ lat, lng });
           } catch (error) {
-            console.log('error!');
+            // eslint-disable-next-line no-console
+            console.log(error);
           }
         }}
       >
