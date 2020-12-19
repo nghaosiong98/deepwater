@@ -46,7 +46,7 @@ const options = {
 const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
   const [form] = Form.useForm();
   const { mutate, isLoading } = useMutation((formData) => axios.post(
-    'http://34.87.47.149/predict',
+    'https://fypapi.haosiongng.com/predict',
     formData,
     {
       headers: {
