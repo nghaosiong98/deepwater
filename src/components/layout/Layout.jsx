@@ -1,37 +1,52 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import { Layout as AntLayout, Menu } from 'antd';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Layout as AntLayout } from 'antd';
+import { useLocation } from 'react-router-dom';
+import NavBar, { menuItems } from '../header/header';
+import { setPageIndex } from '../header/header.action';
 import './Layout.css';
 
 const { Header, Content, Footer } = AntLayout;
 
-const Layout = ({ children }) => (
-  <AntLayout>
-    <Header>
-      <Menu theme="dark" mode="horizontal">
-        <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
-        <Menu.Item key="2"><Link to="/about">About Us</Link></Menu.Item>
-        <Menu.Item key="3"><Link to="/upload">Upload</Link></Menu.Item>
-      </Menu>
-    </Header>
-    <Content style={{ padding: '0 50px' }}>
-      { children }
-    </Content>
-    <Footer>
-      <div className="footer-container">
-        <span>
-          Created by
-          {' '}
-          <a href="https://www.linkedin.com/in/haosiongng/">HaoSiong Ng</a>
-        </span>
-      </div>
-    </Footer>
-  </AntLayout>
-);
+const Layout = ({ children, onSetPageIndex }) => {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    const currentPath = menuItems.filter((item) => item.path === location.pathname);
+    if (currentPath.length > 0) {
+      onSetPageIndex(currentPath[0].index.toString(10));
+    }
+  }, [location]);
+
+  return (
+    <AntLayout>
+      <Header>
+        <NavBar />
+      </Header>
+      <Content style={{ padding: '0 50px' }}>
+        { children }
+      </Content>
+      <Footer>
+        <div className="footer-container">
+          <span>
+            Created by
+            {' '}
+            <a href="https://www.linkedin.com/in/haosiongng/">HaoSiong Ng</a>
+          </span>
+        </div>
+      </Footer>
+    </AntLayout>
+  );
+};
 
 Layout.propTypes = ({
   children: Proptypes.any,
+  onSetPageIndex: Proptypes.func,
 });
 
-export default Layout;
+const mapDispatchToProps = (dispatch) => ({
+  onSetPageIndex: (index) => dispatch(setPageIndex(index)),
+});
+
+export default connect(null, mapDispatchToProps)(Layout);

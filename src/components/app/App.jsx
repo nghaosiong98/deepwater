@@ -1,6 +1,5 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 import Layout from '../layout/Layout';
 import Routes from '../routes';
 
@@ -11,7 +10,6 @@ function App() {
       <Layout>
         <Routes />
       </Layout>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
