@@ -17,6 +17,11 @@ export const menuItems = [
     path: '/upload',
     index: 1,
   },
+  {
+    label: 'About Us',
+    path: '/about',
+    index: 2,
+  },
 ];
 
 const Header = ({ pageIndex, onSetPageIndex }) => (
