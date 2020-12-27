@@ -128,7 +128,7 @@ const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
           upload: [],
         }}
       >
-        <Form.Item name="location" label="Location">
+        <Form.Item name="location" label="Lake Location" required>
           <Search panTo={panTo} />
         </Form.Item>
         {/* <Locate panTo={panTo} /> */}
@@ -151,6 +151,7 @@ const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
           label="Upload photos"
           valuePropName="fileList"
           getValueFromEvent={normFile}
+          required
         >
           <Upload
             customRequest={customRequest}

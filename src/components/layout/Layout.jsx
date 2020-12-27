@@ -24,7 +24,7 @@ const Layout = ({ children, onSetPageIndex }) => {
       <Header>
         <NavBar />
       </Header>
-      <Content style={{ padding: '0 50px' }}>
+      <Content>
         { children }
       </Content>
       <Footer>
