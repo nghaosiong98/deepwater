@@ -6,6 +6,18 @@ import {
 } from 'antd';
 import { resetState } from './upload.action';
 
+const labels = {
+  '-1': 'No lake detected',
+  0: 'Not eutrophic',
+  1: 'Eutrophic',
+};
+
+const cardColors = {
+  '-1': 'rgba(0,0,0,0.3)',
+  0: 'rgba(0,255,0,0.3)',
+  1: 'rgba(255,0,0,0.3)',
+};
+
 const Result = ({
   uploadReducer: {
     uploadedFiles,
@@ -19,6 +31,9 @@ const Result = ({
       return (
         <Card
           hoverable
+          bodyStyle={{
+            background: cardColors[result.label],
+          }}
         >
           <Card.Meta
             avatar={
@@ -27,7 +42,7 @@ const Result = ({
             title={file.name}
             description={(
               <div>
-                <span>{result.label}</span>
+                <span>{labels[result.label]}</span>
               </div>
           )}
           />
