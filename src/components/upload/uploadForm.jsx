@@ -111,6 +111,16 @@ const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
     mutate(formData);
   };
 
+  const validateLocation = (_, values) => {
+    const { lat, lng } = values;
+    if (lat === null || lng == null) {
+      // eslint-disable-next-line prefer-promise-reject-errors
+      return Promise.reject('Please select a location.');
+    }
+
+    return Promise.resolve();
+  };
+
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading Maps';
 
@@ -128,7 +138,16 @@ const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
           upload: [],
         }}
       >
-        <Form.Item name="location" label="Lake Location" required>
+        <Form.Item
+          name="location"
+          label="Lake Location"
+          required
+          rules={[
+            {
+              validator: validateLocation,
+            },
+          ]}
+        >
           <Search panTo={panTo} />
         </Form.Item>
         {/* <Locate panTo={panTo} /> */}
@@ -152,6 +171,7 @@ const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
           valuePropName="fileList"
           getValueFromEvent={normFile}
           required
+          rules={[{ required: true, message: 'Upload at least 1 photo.' }]}
         >
           <Upload
             customRequest={customRequest}
