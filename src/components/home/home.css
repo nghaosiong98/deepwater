@@ -2,5 +2,15 @@
   display: grid;
   align-items: center;
   text-align: center;
-  height: 100vh;
+  /* height: 70vh; */
+  padding-top: 10vh;
+}
+
+.description {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.small-note {
+  font-size: 12px;
 }
