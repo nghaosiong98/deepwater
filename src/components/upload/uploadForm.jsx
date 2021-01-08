@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  Upload, Button, Form, Spin,
+  Upload, Button, Form, Spin, Modal,
 } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import {
@@ -121,6 +121,12 @@ const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
     return Promise.resolve();
   };
 
+  const [visibleModal, setVisibleModal] = React.useState(false);
+
+  const toggleModal = () => {
+    setVisibleModal(!visibleModal);
+  };
+
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading Maps';
 
@@ -165,6 +171,8 @@ const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
             />
           ))}
         </GoogleMap>
+        <Button type="link" onClick={toggleModal}>Photo Specification</Button>
+        <ExampleModal visible={visibleModal} onCancel={toggleModal} />
         <Form.Item
           name="upload"
           label="Upload photos"
@@ -281,4 +289,23 @@ const Locate = ({ panTo }) => (
 
 Locate.propTypes = {
   panTo: PropTypes.func,
+};
+
+const ExampleModal = ({ visible, onCancel }) => (
+  <Modal
+    title="Recommended specification"
+    visible={visible}
+    onCancel={onCancel}
+    footer={null}
+  >
+    <p>The photo should be taken between 1.7m and 2.3m above the water surface.</p>
+    <p>The photo should have minimum resolution of 1920 x 1080.</p>
+    <p>The photo should be taken during daytime.</p>
+    <p>Only upload photo of lake.</p>
+  </Modal>
+);
+
+ExampleModal.propTypes = {
+  visible: PropTypes.bool,
+  onCancel: PropTypes.func,
 };
