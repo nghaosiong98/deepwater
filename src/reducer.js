@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import uploadReducer from './components/upload/upload.reducer';
-import headerReducer from './components/header/header.reducer';
+import navbarReducer from './components/navbar/navbar.reducer';
 
 const reducer = combineReducers({
   uploadReducer,
-  headerReducer,
+  navbarReducer,
 });
 
 export default reducer;

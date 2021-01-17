@@ -1,6 +1,6 @@
 import {
   SET_PAGE_INDEX,
-} from './header.action';
+} from './navbar.action';
 
 const initialState = {
   pageIndex: '0',

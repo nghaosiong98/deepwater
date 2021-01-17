@@ -3,11 +3,11 @@ import Proptypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Layout as AntLayout } from 'antd';
 import { useLocation } from 'react-router-dom';
-import NavBar, { menuItems } from '../header/header';
-import { setPageIndex } from '../header/header.action';
+import NavBar, { menuItems } from '../navbar/navbar';
+import { setPageIndex } from '../navbar/navbar.action';
 import './Layout.css';
 
-const { Header, Content, Footer } = AntLayout;
+const { Content, Footer } = AntLayout;
 
 const Layout = ({ children, onSetPageIndex }) => {
   const location = useLocation();
@@ -21,10 +21,8 @@ const Layout = ({ children, onSetPageIndex }) => {
 
   return (
     <AntLayout>
-      <Header>
-        <NavBar />
-      </Header>
-      <Content>
+      <NavBar />
+      <Content style={{ marginTop: 64 }}>
         { children }
       </Content>
       <Footer>
