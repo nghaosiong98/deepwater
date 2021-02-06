@@ -5,6 +5,7 @@ import {
   Card, Image, Space, Button,
 } from 'antd';
 import { resetState } from './upload.action';
+import './result.css';
 
 const labels = {
   '-1': 'No lake detected',
@@ -39,11 +40,23 @@ const Result = ({
             avatar={
               <Image src={file.thumbUrl} preview={false} />
             }
-            title={file.name}
+            title={
+              <p className="filename">{file.name}</p>
+            }
             description={(
-              <div>
-                <span>{labels[result.label]}</span>
-              </div>
+              <>
+                <p className="label">{labels[result.label]}</p>
+                <p className="score">
+                  <span>Eutrophic score:</span>
+                  <br />
+                  {parseFloat(result.prediction[0]).toFixed(5)}
+                </p>
+                <p className="score">
+                  <span>Not Eutrophic score:</span>
+                  <br />
+                  {parseFloat(result.prediction[1]).toFixed(5)}
+                </p>
+              </>
           )}
           />
         </Card>
