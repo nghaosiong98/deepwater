@@ -1,0 +1,12 @@
+.filename {
+  font-size: 1rem;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.score {
+  font-size: 0.8rem;
+}
