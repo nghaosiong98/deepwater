@@ -40,7 +40,8 @@ const center = {
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
-  zoomControl: true,
+  zoomControl: false,
+  gestureHandling: 'none',
 };
 
 const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
