@@ -5,7 +5,6 @@ import { Layout as AntLayout } from 'antd';
 import { useLocation } from 'react-router-dom';
 import NavBar, { menuItems } from '../navbar/navbar';
 import { setPageIndex } from '../navbar/navbar.action';
-import './Layout.css';
 
 const { Content, Footer } = AntLayout;
 

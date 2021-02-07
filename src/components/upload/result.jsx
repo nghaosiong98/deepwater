@@ -5,7 +5,6 @@ import {
   Card, Image, Space, Button,
 } from 'antd';
 import { resetState } from './upload.action';
-import './result.css';
 
 const labels = {
   '-1': 'No lake detected',
@@ -13,11 +12,11 @@ const labels = {
   1: 'Eutrophic',
 };
 
-const cardColors = {
-  '-1': 'rgba(0,0,0,0.3)',
-  0: 'rgba(0,255,0,0.3)',
-  1: 'rgba(255,0,0,0.3)',
-};
+// const cardColors = {
+//   '-1': 'rgba(0,0,0,0.3)',
+//   0: 'rgba(0,255,0,0.3)',
+//   1: 'rgba(255,0,0,0.3)',
+// };
 
 const Result = ({
   uploadReducer: {
@@ -33,32 +32,24 @@ const Result = ({
         <Card
           hoverable
           bodyStyle={{
-            background: cardColors[result.label],
+            // background: cardColors[result.label],
           }}
         >
-          <Card.Meta
-            avatar={
-              <Image src={file.thumbUrl} preview={false} />
-            }
-            title={
-              <p className="filename">{file.name}</p>
-            }
-            description={(
-              <>
-                <p className="label">{labels[result.label]}</p>
-                <p className="score">
-                  <span>Eutrophic score:</span>
-                  <br />
-                  {parseFloat(result.prediction[0]).toFixed(5)}
-                </p>
-                <p className="score">
-                  <span>Not Eutrophic score:</span>
-                  <br />
-                  {parseFloat(result.prediction[1]).toFixed(5)}
-                </p>
-              </>
-          )}
-          />
+          <Image src={file.thumbUrl} preview={false} width="300px" />
+          <p className="score">
+            <span className="filename">{file.name}</span>
+            <br />
+            <span className="label">{labels[result.label]}</span>
+            <br />
+            <br />
+            <span>Eutrophic score:</span>
+            <br />
+            {parseFloat(result.prediction[0]).toFixed(5)}
+            <br />
+            <span>Not Eutrophic score:</span>
+            <br />
+            {parseFloat(result.prediction[1]).toFixed(5)}
+          </p>
         </Card>
       );
     })}

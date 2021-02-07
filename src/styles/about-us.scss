@@ -1,6 +1,15 @@
-.flex-column {
+.aboutus__container {
   display: flex;
   flex-direction: column;
+
+  p {
+    font-size: 1.2rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
 }
 
 .row {
@@ -17,10 +26,3 @@
   padding: 1em;
 }
 
-p {
-  font-size: 1.2rem;
-}
-
-h1 {
-  font-size: 2rem;
-}

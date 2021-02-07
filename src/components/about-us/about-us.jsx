@@ -2,10 +2,9 @@ import React from 'react';
 import { Image, Row, Col } from 'antd';
 import UMLake from '../../images/um-lake.jpg';
 import BukitSerindit from '../../images/bukit_serindit.jpg';
-import './about-us.css';
 
 const AboutUs = () => (
-  <div className="flex-column">
+  <div className="aboutus__container">
     <div className="slogan">
       <h1>Upload. Predict. Save the lakes.</h1>
     </div>

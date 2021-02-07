@@ -8,7 +8,6 @@ import Landing1 from '../../images/landing1.jpg';
 import Landing2 from '../../images/landing2.jpg';
 import Landing3 from '../../images/landing3.jpg';
 import Landing4 from '../../images/landing4.jpg';
-import './home.css';
 
 const home = () => (
   <>

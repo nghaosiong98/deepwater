@@ -27,7 +27,6 @@ import { useMutation } from 'react-query';
 
 import mapStyles from './mapStyles';
 import locateIcon from '../../images/locate-me.svg';
-import './upload.css';
 
 import { setResults, setUploadedFiles } from './upload.action';
 
@@ -132,72 +131,74 @@ const UploadForm = ({ onSetResults, onSetUploadedFiles }) => {
   if (!isLoaded) return 'Loading Maps';
 
   return (
-    <Spin spinning={isLoading}>
-      <Form
-        form={form}
-        layout="vertical"
-        onFinish={onFinish}
-        initialValues={{
-          location: {
-            lat: null,
-            lng: null,
-          },
-          upload: [],
-        }}
-      >
-        <Form.Item
-          name="location"
-          label="Lake Location"
-          required
-          rules={[
-            {
-              validator: validateLocation,
+    <div className="form">
+      <Spin spinning={isLoading}>
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={onFinish}
+          initialValues={{
+            location: {
+              lat: null,
+              lng: null,
             },
-          ]}
+            upload: [],
+          }}
         >
-          <Search panTo={panTo} />
-        </Form.Item>
-        {/* <Locate panTo={panTo} /> */}
-        <GoogleMap
-          mapContainerClassName="map-container"
-          center={center}
-          zoom={8}
-          options={options}
-          onLoad={onMapLoad}
-        >
-          {markers.map((marker) => (
-            <Marker
-              key={marker.time.toISOString()}
-              position={{ lat: marker.lat, lng: marker.lng }}
-            />
-          ))}
-        </GoogleMap>
-        <Button type="link" onClick={toggleModal}>Photo Specification</Button>
-        <ExampleModal visible={visibleModal} onCancel={toggleModal} />
-        <Form.Item
-          name="upload"
-          label="Upload photos"
-          valuePropName="fileList"
-          getValueFromEvent={normFile}
-          required
-          rules={[{ required: true, message: 'Upload at least 1 photo.' }]}
-        >
-          <Upload
-            customRequest={customRequest}
-            className="upload-list-inline"
-            listType="picture"
-            beforeUpload={() => false}
-            multiple
-            disabled={isLoading}
+          <Form.Item
+            name="location"
+            label="Lake Location"
+            required
+            rules={[
+              {
+                validator: validateLocation,
+              },
+            ]}
           >
-            <Button icon={<UploadOutlined />}>Upload</Button>
-          </Upload>
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" disabled={isLoading}>Submit</Button>
-        </Form.Item>
-      </Form>
-    </Spin>
+            <Search panTo={panTo} />
+          </Form.Item>
+          {/* <Locate panTo={panTo} /> */}
+          <GoogleMap
+            mapContainerClassName="map-container"
+            center={center}
+            zoom={8}
+            options={options}
+            onLoad={onMapLoad}
+          >
+            {markers.map((marker) => (
+              <Marker
+                key={marker.time.toISOString()}
+                position={{ lat: marker.lat, lng: marker.lng }}
+              />
+            ))}
+          </GoogleMap>
+          <Button type="link" onClick={toggleModal}>Photo Specification</Button>
+          <ExampleModal visible={visibleModal} onCancel={toggleModal} />
+          <Form.Item
+            name="upload"
+            label="Upload photos"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+            required
+            rules={[{ required: true, message: 'Upload at least 1 photo.' }]}
+          >
+            <Upload
+              customRequest={customRequest}
+              className="upload-list-inline"
+              listType="picture"
+              beforeUpload={() => false}
+              multiple
+              disabled={isLoading}
+            >
+              <Button icon={<UploadOutlined />}>Upload</Button>
+            </Upload>
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit" disabled={isLoading}>Submit</Button>
+          </Form.Item>
+        </Form>
+      </Spin>
+    </div>
   );
 };
 
