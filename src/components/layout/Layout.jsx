@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Layout as AntLayout } from 'antd';
+import { Layout as AntLayout, Row, Col } from 'antd';
 import { useLocation } from 'react-router-dom';
 import NavBar, { menuItems } from '../navbar/navbar';
 import { setPageIndex } from '../navbar/navbar.action';
@@ -25,13 +25,20 @@ const Layout = ({ children, onSetPageIndex }) => {
         { children }
       </Content>
       <Footer>
-        <div className="footer-container">
-          <span>
-            Created by
-            {' '}
-            <a href="https://www.linkedin.com/in/haosiongng/">HaoSiong Ng</a>
-          </span>
-        </div>
+        <Row>
+          <Col span={8}>
+            <span>
+              Created by
+              {' '}
+              <a href="https://www.linkedin.com/in/haosiongng/">HaoSiong Ng</a>
+            </span>
+          </Col>
+          <Col span={8} offset={8} style={{ textAlign: 'right' }}>
+            <span>
+              <a href="mailto:nghaosiong98@gmail.com">Found a bug?</a>
+            </span>
+          </Col>
+        </Row>
       </Footer>
     </AntLayout>
   );
