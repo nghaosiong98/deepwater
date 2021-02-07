@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import UploadForm from './uploadForm';
 import Result from './result';
-import './upload.css';
 
 const UploadPage = ({ results }) => (
   <div className="form-section">
-    <div className="card">
-      {results.length === 0
-        ? <UploadForm />
-        : <Result />}
-    </div>
+    {results.length === 0
+      ? <UploadForm />
+      : <Result />}
   </div>
 );
 

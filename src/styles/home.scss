@@ -1,0 +1,43 @@
+.hero {
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  min-height: 620px;
+  width: 100%;
+
+  .top {
+    padding: 50px 0;
+  }
+
+  .description {
+    padding: 1em;
+  }
+}
+
+.small-note {
+  font-size: 12px;
+}
+
+@media (min-width: 300px) {
+  .hero h1 {
+    font-size: 1.3em;
+  }
+}
+
+@media (min-width: 425px) {
+  .hero h1 {
+    font-size: 1.8em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero h1 {
+    font-size: 2.2em;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero h1 {
+    font-size: 2.8em;
+  }
+}

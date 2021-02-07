@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Menu, Layout } from 'antd';
 import { Link } from 'react-router-dom';
 import { setPageIndex } from './navbar.action';
-import './navbar.css';
 
 const { Header } = Layout;
 

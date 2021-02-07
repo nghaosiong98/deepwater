@@ -2,16 +2,15 @@ import React from 'react';
 import { Image, Row, Col } from 'antd';
 import UMLake from '../../images/um-lake.jpg';
 import BukitSerindit from '../../images/bukit_serindit.jpg';
-import './about-us.css';
 
 const AboutUs = () => (
-  <div className="flex-column">
+  <div className="aboutus__container">
     <div className="slogan">
       <h1>Upload. Predict. Save the lakes.</h1>
     </div>
     <Row align="middle">
       <Col md={11} xs={24}>
-        <Image src={UMLake} alt="Lake" preview={false} />
+        <Image src={UMLake} alt="Lake" preview={false} width="100%" />
       </Col>
       <Col md={13} xs={24} className="descriptions">
         <h1>Author</h1>
@@ -45,7 +44,7 @@ const AboutUs = () => (
         </p>
       </Col>
       <Col md={11} xs={24}>
-        <Image src={BukitSerindit} alt="Lake" preview={false} />
+        <Image src={BukitSerindit} alt="Lake" preview={false} width="100%" />
       </Col>
     </Row>
   </div>
