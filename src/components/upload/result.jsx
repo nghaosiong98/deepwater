@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  Card, Image, Space, Button,
+  Card, Image, Row, Button, Space,
 } from 'antd';
 import { resetState } from './upload.action';
 
@@ -25,35 +25,41 @@ const Result = ({
   },
   onResetState,
 }) => (
-  <Space size="small" direction="vertical" align="center">
-    {uploadedFiles.map((file) => {
-      const result = results.filter((r) => r.filename === file.name)[0];
-      return (
-        <Card
-          hoverable
-          bodyStyle={{
-            // background: cardColors[result.label],
-          }}
-        >
-          <Image src={file.thumbUrl} preview={false} width="300px" />
-          <p className="score">
-            <span className="filename">{file.name}</span>
-            <br />
-            <span className="label">{labels[result.label]}</span>
-            <br />
-            <br />
-            <span>Eutrophic score:</span>
-            <br />
-            {parseFloat(result.prediction[0]).toFixed(5)}
-            <br />
-            <span>Not Eutrophic score:</span>
-            <br />
-            {parseFloat(result.prediction[1]).toFixed(5)}
-          </p>
-        </Card>
-      );
-    })}
-    <Button onClick={() => onResetState()}>Upload Again</Button>
+  <Space direction="vertical" align="center" size="middle">
+    <br />
+    <Row justify="center">
+      {uploadedFiles.map((file) => {
+        const result = results.filter((r) => r.filename === file.name)[0];
+        return (
+          <Card
+            hoverable
+            bodyStyle={{
+              // background: cardColors[result.label],
+            }}
+          >
+            <Image src={file.thumbUrl} preview={false} width="300px" />
+            <p className="score">
+              <span className="filename">{file.name}</span>
+              <br />
+              <span className="label">{labels[result.label]}</span>
+              <br />
+              <br />
+              <span>Eutrophic score:</span>
+              <br />
+              {parseFloat(result.prediction[0]).toFixed(5)}
+              <br />
+              <span>Not Eutrophic score:</span>
+              <br />
+              {parseFloat(result.prediction[1]).toFixed(5)}
+            </p>
+          </Card>
+        );
+      })}
+    </Row>
+
+    <Row>
+      <Button onClick={() => onResetState()}>Upload Again</Button>
+    </Row>
   </Space>
 );
 
