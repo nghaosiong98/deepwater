@@ -1,9 +1,10 @@
 import { FC } from 'react';
+import Router from './modules/Router';
 
 const App: FC = () => (
-  <div>
-    Hello
-  </div>
+  <>
+    <Router />
+  </>
 );
 
 export default App;
