@@ -1,10 +1,14 @@
 import { FC } from 'react';
-import Router from './modules/Router';
+import { Routes, Route } from 'react-router-dom';
+
+import Home from './modules/Home';
+import About from './modules/About';
 
 const App: FC = () => (
-  <>
-    <Router />
-  </>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="about" element={<About />} />
+  </Routes>
 );
 
 export default App;
