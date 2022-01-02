@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 import react from 'vite-preset-react';
+import env from 'vite-plugin-env-compatible';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,5 +10,7 @@ export default defineConfig({
   build: {
     outDir: 'build',
   },
-  plugins: [react(), svgr()],
+  plugins: [react(), svgr(), env({
+    prefix: 'REACT_APP',
+  })],
 });
