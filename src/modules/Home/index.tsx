@@ -1,35 +1,74 @@
 import { FC } from 'react';
+import { Carousel } from 'react-responsive-carousel';
+
 import TwoLeafImage from '../../images/two-leaves.svg';
 import Landing1 from '../../images/landing1.jpg';
-import Landing2 from '../../images/landing2.jpg';
-import Landing3 from '../../images/landing3.jpg';
-import Landing4 from '../../images/landing4.jpg';
+
 import NavBar from '../../components/NavBar';
+import NavBarSpacer from '../../components/NavBarSpacer';
+import Text from '../../components/Text';
 
 const Home: FC = () => (
-  <div className="bg-gray-200 static">
+  <div className="bg-gray-200">
     <NavBar />
-    <div className="h-screen flex flex-col">
-      <div className="flex-1 flex flex-col justify-center items-center container mx-auto">
-        <img src={TwoLeafImage} alt="twoLeafs" className="w-1/6" />
-        <p className="text-4xl">Upload. Predict. Save the lakes.</p>
+
+    <div className="space-y-10">
+      <Carousel
+        showStatus={false}
+        showThumbs={false}
+        infiniteLoop
+        autoPlay
+        interval={4000}
+      >
+        <div className="flex flex-col justify-center items-center h-full">
+          <div className="w-1/5">
+            <img src={TwoLeafImage} alt="twoLeafs" />
+          </div>
+          <p className="text-4xl">Welcome to DeepWater</p>
+        </div>
+        <div>
+          <img src={Landing1} alt="L1" />
+        </div>
+      </Carousel>
+      <div className="flex flex-col container mx-auto">
+        <Text variant="h1">Who Are We</Text>
+        <Text variant="body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor lacus in dui gravida elementum. Morbi consectetur posuere magna, in rutrum mauris convallis et. Maecenas ultricies, nulla vel scelerisque dignissim, felis augue sodales lectus, ac ullamcorper ipsum nisl ut urna. Vivamus urna urna, euismod non orci vel, mattis tristique arcu. Fusce sollicitudin orci eu facilisis maximus. Ut nisl felis, pharetra eu sem vel, porta consectetur dolor. Donec accumsan odio at hendrerit rutrum. Fusce at nisi ac velit efficitur consectetur. Sed condimentum ut quam in posuere. Suspendisse vestibulum venenatis orci, sit amet viverra libero pellentesque sit amet. Cras in ipsum vel quam tincidunt rutrum. Nam convallis orci neque, ut blandit ipsum euismod in. Mauris blandit, ipsum a sagittis luctus, tortor ligula sodales mi, ut pellentesque justo sapien ac metus. Vestibulum nibh arcu, congue quis rhoncus nec, aliquet eget quam. Cras eu justo vel justo vestibulum vestibulum quis vel nibh.
+        </Text>
       </div>
-      <div className="flex sm:h-48 lg:h-80">
-        <div className="flex w-full">
-          <img className="object-cover w-full" src={Landing1} alt="L1" />
-        </div>
-        <div className="flex w-full">
-          <img className="object-cover w-full" src={Landing2} alt="L2" />
-        </div>
-        <div className="flex w-full">
-          <img className="object-cover w-full" src={Landing3} alt="L3" />
-        </div>
-        <div className="flex w-full">
-          <img className="object-cover w-full" src={Landing4} alt="L4" />
+      <div className="flex flex-col container mx-auto">
+        <Text variant="h1">Our Mission</Text>
+        <Text variant="body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor lacus in dui gravida elementum. Morbi consectetur posuere magna, in rutrum mauris convallis et. Maecenas ultricies, nulla vel scelerisque dignissim, felis augue sodales lectus, ac ullamcorper ipsum nisl ut urna. Vivamus urna urna, euismod non orci vel, mattis tristique arcu. Fusce sollicitudin orci eu facilisis maximus. Ut nisl felis, pharetra eu sem vel, porta consectetur dolor. Donec accumsan odio at hendrerit rutrum. Fusce at nisi ac velit efficitur consectetur. Sed condimentum ut quam in posuere. Suspendisse vestibulum venenatis orci, sit amet viverra libero pellentesque sit amet. Cras in ipsum vel quam tincidunt rutrum. Nam convallis orci neque, ut blandit ipsum euismod in. Mauris blandit, ipsum a sagittis luctus, tortor ligula sodales mi, ut pellentesque justo sapien ac metus. Vestibulum nibh arcu, congue quis rhoncus nec, aliquet eget quam. Cras eu justo vel justo vestibulum vestibulum quis vel nibh.
+        </Text>
+      </div>
+
+      <div className="bg-mantis py-10">
+        <div className="grid grid-cols-2 container mx-auto">
+          <div className="justify-self-start">
+            <Text variant="h2" color="light">
+              DeepLake
+            </Text>
+            <Text variant="body" color="light">Upload. Predict. Save the lake.</Text>
+          </div>
+          <div className="justify-self-center">
+            <div className="bg-sapGreen p-8 rounded-lg drop-shadow-lg">
+              <Text variant="h2" color="light">Contact Us</Text>
+              <ul className="list-none">
+                <li>
+                  <Text variant="body2" color="light">
+                    Email:
+                    {' '}
+                    <a href="mailto:test@test.com">test@test.com</a>
+                  </Text>
+                </li>
+                <li><Text variant="body2" color="light">Phone: +60123456789</Text></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 );
 

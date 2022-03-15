@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NavBar: FC = () => (
-  <div className="w-screen absolute bg-mantis flex items-center h-16 justify-end top-0">
+  <div className="w-screen sticky bg-mantis flex items-center h-16 justify-end top-0 z-10">
     <div className="container mx-auto flex justify-between items-center">
       <NavLink to="/" className="text-gray-200 hover:text-gray-300 px-10 flex-grow font-bold">
         DeepWater
