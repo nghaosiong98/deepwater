@@ -5,8 +5,9 @@ import TwoLeafImage from '../../images/two-leaves.svg';
 import Landing1 from '../../images/landing1.jpg';
 
 import NavBar from '../../components/NavBar';
-import NavBarSpacer from '../../components/NavBarSpacer';
 import Text from '../../components/Text';
+import Footer from '../../components/Footer';
+import Container from '../../components/Container';
 
 const Home: FC = () => (
   <div className="bg-gray-200">
@@ -30,44 +31,20 @@ const Home: FC = () => (
           <img src={Landing1} alt="L1" />
         </div>
       </Carousel>
-      <div className="flex flex-col container mx-auto">
+      <Container>
         <Text variant="h1">Who Are We</Text>
-        <Text variant="body">
+        <Text variant="body1">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor lacus in dui gravida elementum. Morbi consectetur posuere magna, in rutrum mauris convallis et. Maecenas ultricies, nulla vel scelerisque dignissim, felis augue sodales lectus, ac ullamcorper ipsum nisl ut urna. Vivamus urna urna, euismod non orci vel, mattis tristique arcu. Fusce sollicitudin orci eu facilisis maximus. Ut nisl felis, pharetra eu sem vel, porta consectetur dolor. Donec accumsan odio at hendrerit rutrum. Fusce at nisi ac velit efficitur consectetur. Sed condimentum ut quam in posuere. Suspendisse vestibulum venenatis orci, sit amet viverra libero pellentesque sit amet. Cras in ipsum vel quam tincidunt rutrum. Nam convallis orci neque, ut blandit ipsum euismod in. Mauris blandit, ipsum a sagittis luctus, tortor ligula sodales mi, ut pellentesque justo sapien ac metus. Vestibulum nibh arcu, congue quis rhoncus nec, aliquet eget quam. Cras eu justo vel justo vestibulum vestibulum quis vel nibh.
         </Text>
-      </div>
-      <div className="flex flex-col container mx-auto">
+      </Container>
+      <Container>
         <Text variant="h1">Our Mission</Text>
-        <Text variant="body">
+        <Text variant="body1">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor lacus in dui gravida elementum. Morbi consectetur posuere magna, in rutrum mauris convallis et. Maecenas ultricies, nulla vel scelerisque dignissim, felis augue sodales lectus, ac ullamcorper ipsum nisl ut urna. Vivamus urna urna, euismod non orci vel, mattis tristique arcu. Fusce sollicitudin orci eu facilisis maximus. Ut nisl felis, pharetra eu sem vel, porta consectetur dolor. Donec accumsan odio at hendrerit rutrum. Fusce at nisi ac velit efficitur consectetur. Sed condimentum ut quam in posuere. Suspendisse vestibulum venenatis orci, sit amet viverra libero pellentesque sit amet. Cras in ipsum vel quam tincidunt rutrum. Nam convallis orci neque, ut blandit ipsum euismod in. Mauris blandit, ipsum a sagittis luctus, tortor ligula sodales mi, ut pellentesque justo sapien ac metus. Vestibulum nibh arcu, congue quis rhoncus nec, aliquet eget quam. Cras eu justo vel justo vestibulum vestibulum quis vel nibh.
         </Text>
-      </div>
+      </Container>
 
-      <div className="bg-mantis py-10">
-        <div className="grid grid-cols-2 container mx-auto">
-          <div className="justify-self-start">
-            <Text variant="h2" color="light">
-              DeepLake
-            </Text>
-            <Text variant="body" color="light">Upload. Predict. Save the lake.</Text>
-          </div>
-          <div className="justify-self-center">
-            <div className="bg-sapGreen p-8 rounded-lg drop-shadow-lg">
-              <Text variant="h2" color="light">Contact Us</Text>
-              <ul className="list-none">
-                <li>
-                  <Text variant="body2" color="light">
-                    Email:
-                    {' '}
-                    <a href="mailto:test@test.com">test@test.com</a>
-                  </Text>
-                </li>
-                <li><Text variant="body2" color="light">Phone: +60123456789</Text></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
   </div>
 );
