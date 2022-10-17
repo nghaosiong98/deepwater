@@ -1,20 +1,28 @@
-import { FC } from 'react';
-import { Routes, Route } from 'react-router-dom';
-
-import Home from './modules/Home';
-import About from './modules/About';
-import Upload from './modules/Upload';
-import Project from './modules/Project';
-
-import './firebase';
+import React, { FC } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 const App: FC = () => (
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/about" element={<About />} />
-    <Route path="/upload" element={<Upload />} />
-    <Route path="/project" element={<Project />} />
-  </Routes>
+  <div className="App">
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>
+        Edit
+        {' '}
+        <code>src/App.tsx</code>
+        {' '}
+        and save to reload.
+      </p>
+      <a
+        className="App-link"
+        href="https://reactjs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Learn React
+      </a>
+    </header>
+  </div>
 );
 
 export default App;
