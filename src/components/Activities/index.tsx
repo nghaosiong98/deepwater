@@ -23,7 +23,7 @@ const Activities: FC<ActivitiesProps> = ({
     </Typography>
     <Slider {...settings}>
       {data.images.map((image) => (
-        <Box>
+        <Box key={image.path}>
           <Box sx={{ padding: 1, height: 300 }}>
             <img src={image.path} alt={image.name} style={{ height: '100%', objectFit: 'cover', width: '100%' }} />
           </Box>

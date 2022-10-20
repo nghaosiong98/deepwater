@@ -24,7 +24,7 @@ const HeroCarousel: FC = () => {
         infiniteLoop
       >
         {heroData.data.map((hero) => (
-          <HeroSection>
+          <HeroSection key={hero.path}>
             <img src={hero.path} alt={hero.name} style={{ height: '100%', objectFit: 'cover', width: '100%' }} />
           </HeroSection>
         ))}
