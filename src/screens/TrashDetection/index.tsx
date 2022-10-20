@@ -54,7 +54,7 @@ const TrashDetection: FC = () => {
       <Toolbar />
       <Container sx={{ flexGrow: 1, padding: 2 }}>
         <Grid container spacing={1}>
-          <Grid lg={8}>
+          <Grid xs={12} lg={8}>
             <Grid>
               <Card sx={{ display: 'flex', justifyContent: 'center', padding: 2 }} elevation={3}>
                 <Box sx={{
@@ -110,7 +110,7 @@ const TrashDetection: FC = () => {
               </Card>
             </Grid>
           </Grid>
-          <Grid lg={4}>
+          <Grid xs={12} lg={4}>
             <Grid>
               <Card sx={{ padding: 2 }}>
                 <Typography variant="h5">Result</Typography>
