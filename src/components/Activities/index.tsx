@@ -18,7 +18,7 @@ const Activities: FC<ActivitiesProps> = ({
   data,
 }) => (
   <Stack spacing={2}>
-    <Typography variant="h4">
+    <Typography variant="h5" fontWeight="medium">
       {data.title}
     </Typography>
     <Slider {...settings}>

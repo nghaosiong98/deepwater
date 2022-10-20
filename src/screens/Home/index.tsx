@@ -38,10 +38,13 @@ const Home: FC = () => (
     </Container>
     <Box sx={{ height: 100 }} />
     <Container>
-      <Stack spacing={8}>
-        <Event01 />
-        <Event02 />
-        <Event03 />
+      <Stack spacing={4}>
+        <Typography variant="h4" fontWeight="medium">Our Projects</Typography>
+        <Stack spacing={8}>
+          <Event01 />
+          <Event02 />
+          <Event03 />
+        </Stack>
       </Stack>
     </Container>
   </Box>
