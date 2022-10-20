@@ -47,6 +47,7 @@ const Home: FC = () => (
         </Stack>
       </Stack>
     </Container>
+    <Box sx={{ height: 100 }} />
   </Box>
 );
 
