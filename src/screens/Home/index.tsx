@@ -1,9 +1,14 @@
 import React, { FC } from 'react';
 import Box from '@mui/material/Box';
-import { Container, Toolbar, Typography } from '@mui/material';
+import {
+  Container, Stack, Toolbar, Typography,
+} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import AppBar from '../../components/AppBar';
 import HeroCarousel from '../../components/HeroCarousel';
+import Event01 from '../../components/Activities/Event01';
+import Event02 from '../../components/Activities/Event02';
+import Event03 from '../../components/Activities/Event03';
 
 const Home: FC = () => (
   <Box>
@@ -14,14 +19,15 @@ const Home: FC = () => (
     <Container>
       <Grid container spacing={2}>
         <Grid
-          xs={5}
+          xs={12}
+          md={5}
           sx={{
             display: 'flex', justifyContent: 'center', alignItems: 'center',
           }}
         >
-          <Typography variant="h3">The Team</Typography>
+          <Typography variant="h3" fontWeight="medium">The Team</Typography>
         </Grid>
-        <Grid xs={7}>
+        <Grid xs={12} md={7}>
           <Grid>
             <Box sx={{ borderRadius: 8, overflow: 'hidden' }}>
               <img src="https://deepwaterstaticcontent.blob.core.windows.net/images/team.jpg" alt="team" style={{ height: '100%', objectFit: 'cover', width: '100%' }} />
@@ -31,17 +37,12 @@ const Home: FC = () => (
       </Grid>
     </Container>
     <Box sx={{ height: 100 }} />
-    <Container sx={{
-      border: 1,
-      height: 300,
-      alignItems: 'center',
-      justifyContent: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-    }}
-    >
-      <Typography variant="h2">Coming soon</Typography>
-      <Typography>We are still working in progess...</Typography>
+    <Container>
+      <Stack spacing={8}>
+        <Event01 />
+        <Event02 />
+        <Event03 />
+      </Stack>
     </Container>
   </Box>
 );
