@@ -4,6 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 
 const URL = 'https://deepwater.azure-api.net/trash-detection/score';
 const API_KEY = process.env.REACT_APP_AZURE_ML_ENDPOINT_KEY_A;
+const SUB_KEY = process.env.REACT_APP_AZURE_SUB_KEY_A;
 
 type TrashDetectionResp = {
   image_size: [number, number];
@@ -17,7 +18,7 @@ export const useTrashDetectionMutation = () => useMutation(
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: (`Bearer ${API_KEY}`),
-      'Ocp-Apim-Subscription-Key': '5057174b84364143a6bd451be88e4a24',
+      'Ocp-Apim-Subscription-Key': SUB_KEY,
     },
     data: formData,
   }),
