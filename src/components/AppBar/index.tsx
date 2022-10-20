@@ -27,23 +27,15 @@ const AppBar: FC = () => {
   return (
     <MuiAppBar component="nav">
       <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          sx={{ mr: 2, display: { sm: 'none' } }}
-        >
-          <MenuIcon />
-        </IconButton>
         <Typography
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+          sx={{ flexGrow: 1 }}
           onClick={() => navigate('/')}
         >
           DeepWater
         </Typography>
-        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+        <Box>
           <Button sx={{ color: '#fff' }} onClick={handleClick}>
             Our Projects
           </Button>

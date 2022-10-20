@@ -15,7 +15,7 @@ const Home: FC = () => (
     <AppBar />
     <Toolbar />
     <HeroCarousel />
-    <Box sx={{ height: 100 }} />
+    <Box sx={{ height: { xs: 50, md: 100 } }} />
     <Container>
       <Grid container spacing={2}>
         <Grid
@@ -36,7 +36,7 @@ const Home: FC = () => (
         </Grid>
       </Grid>
     </Container>
-    <Box sx={{ height: 100 }} />
+    <Box sx={{ height: { xs: 50, md: 100 } }} />
     <Container>
       <Stack spacing={4}>
         <Typography variant="h4" fontWeight="medium">Our Projects</Typography>

@@ -21,6 +21,7 @@ module.exports = {
     'react/require-default-props': 0,
     'react/react-in-jsx-scope': 0,
     'react/jsx-props-no-spreading': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/no-unused-vars': 1,
   },
 };
