@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const menuPaths = [
   {
-    name: 'Recyclable trash classifier',
+    name: 'Recyclable Trash Classifier',
     path: '/recyclable-trash-classifier',
   },
 ];
@@ -45,7 +45,7 @@ const AppBar: FC = () => {
         </Typography>
         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           <Button sx={{ color: '#fff' }} onClick={handleClick}>
-            Projects
+            Our Projects
           </Button>
         </Box>
         <Menu

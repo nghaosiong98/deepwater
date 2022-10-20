@@ -1,70 +1,53 @@
 import React, { FC } from 'react';
 import Box from '@mui/material/Box';
 import {
-  Container, Toolbar, Typography,
+  Container, Stack, Toolbar, Typography,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { Carousel } from 'react-responsive-carousel';
+import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import AppBar from '../../components/AppBar';
-
-const HeroSection = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.up('xs')]: {
-    height: 400,
-  },
-  [theme.breakpoints.up('md')]: {
-    height: 500,
-  },
-}));
+import HeroCarousel from '../../components/HeroCarousel';
+import Event01 from '../../components/Activities/Event01';
+import Event02 from '../../components/Activities/Event02';
+import Event03 from '../../components/Activities/Event03';
 
 const Home: FC = () => (
   <Box>
     <AppBar />
     <Toolbar />
-    <Carousel
-      showThumbs={false}
-      showStatus={false}
-      autoPlay
-      infiniteLoop
-    >
-      <HeroSection>
-        <img src="https://deepwaterstaticcontent.blob.core.windows.net/images/hero-01.jpeg" alt="hydrone" style={{ height: '100%', objectFit: 'cover', width: '100%' }} />
-      </HeroSection>
-      <HeroSection>
-        <img src="https://deepwaterstaticcontent.blob.core.windows.net/images/hero-01.jpeg" alt="hydrone" style={{ height: '100%', objectFit: 'cover', width: '100%' }} />
-      </HeroSection>
-    </Carousel>
-    {/* <Container>
+    <HeroCarousel />
+    <Box sx={{ height: 100 }} />
+    <Container>
       <Grid container spacing={2}>
-        <Grid xs={7}>
+        <Grid
+          xs={12}
+          md={5}
+          sx={{
+            display: 'flex', justifyContent: 'center', alignItems: 'center',
+          }}
+        >
+          <Typography variant="h3" fontWeight="medium">The Team</Typography>
+        </Grid>
+        <Grid xs={12} md={7}>
           <Grid>
-            <Stack spacing={2}>
-              <Typography variant="h5">The Team</Typography>
-              <Box sx={{ borderRadius: 8, overflow: 'hidden' }}>
-                <img src="https://deepwaterstaticcontent.blob.core.windows.net/images/team.jpg" alt="team" style={{ height: '100%', objectFit: 'cover', width: '100%' }} />
-              </Box>
-            </Stack>
+            <Box sx={{ borderRadius: 8, overflow: 'hidden' }}>
+              <img src="https://deepwaterstaticcontent.blob.core.windows.net/images/team.jpg" alt="team" style={{ height: '100%', objectFit: 'cover', width: '100%' }} />
+            </Box>
           </Grid>
         </Grid>
-        <Grid xs={5}>
-
-          <Box sx={{ borderRadius: 8, overflow: 'hidden' }}>
-            <img src="https://deepwaterstaticcontent.blob.core.windows.net/images/team.jpg" alt="team" style={{ height: '100%', objectFit: 'cover', width: '100%' }} />
-          </Box>
-        </Grid>
       </Grid>
-    </Container> */}
-    <Container sx={{
-      border: 1,
-      height: 300,
-      alignItems: 'center',
-      justifyContent: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-    }}
-    >
-      <Typography variant="h2">Coming soon</Typography>
-      <Typography>We are still working in progess...</Typography>
     </Container>
+    <Box sx={{ height: 100 }} />
+    <Container>
+      <Stack spacing={4}>
+        <Typography variant="h4" fontWeight="medium">Our Projects</Typography>
+        <Stack spacing={8}>
+          <Event01 />
+          <Event02 />
+          <Event03 />
+        </Stack>
+      </Stack>
+    </Container>
+    <Box sx={{ height: 100 }} />
   </Box>
 );
 
